@@ -15,7 +15,7 @@ const CompOverview = (props) => {
 			.get(`/api/competitions/${props.match.params.id}`)
 			.then((response) => setCompInfo(response.data))
 			.catch((err) => console.log(err, err.response));
-	});
+	}, [props.match]);
 
 	return (
 		<>

@@ -1,10 +1,13 @@
 {
 	"name": "climb-time",
 	"version": "1.0.0",
-	"description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+	"description": "Competition portal for climbing centres.",
 	"main": "App.js",
 	"scripts": {
-		"start": "nodemon backend/app.js"
+		"start": "node backend/app.js",
+		"server": "nodemon backend/app.js",
+		"client": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"repository": {
 		"type": "git",
@@ -18,5 +21,9 @@
 	"homepage": "https://github.com/jammsmith/climbtimeApp#readme",
 	"dependencies": {
 		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"concurrently": "^6.1.0",
+		"nodemon": "^2.0.7"
 	}
 }
