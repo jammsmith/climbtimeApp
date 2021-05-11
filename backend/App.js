@@ -1,7 +1,64 @@
 const express = require('express');
+const app = express();
+
 const competitions = require('./data/competitions');
 
-const app = express();
+// Create Mongoose connection
+const mongoose = require('mongoose');
+
+mongoose
+	.connect('mongodb://localhost:27017/climbTimeDB', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useFindAndModify: false,
+	})
+	.catch((err) => console.log(err));
+
+// Check mongoose connection
+const db = mongoose.connection;
+
+db.on('error', (err) => console.log(err));
+db.once('open', () => console.log('Connected with local database'));
+
+// Create Schemas & Models
+const { Schema, model } = mongoose;
+const { number, string } = require('prop-types');
+
+const userSchema = new Schema({
+	fName: { type: String, required: true },
+	lName: { type: String, required: true },
+	yearOfBirth: Number,
+	email: { type: String, required: true },
+	userName: { type: String, required: true },
+	password: { type: String, required: true },
+	activeComps: {
+		compName: String,
+		currentScore: Number,
+		currentPosition: Number,
+	},
+});
+
+const centreSchema = new Schema({
+	centreName: { type: String, required: true },
+	centreUrl: { type: String, required: true },
+	centreLocation: { type: String, required: true },
+	centreLogo: { type: String, required: true },
+	centreContactNum: number,
+});
+
+const competitionSchema = new Schema({
+	compName: { type: String, required: true },
+	centreName: { type: String, required: true },
+	numOfRound: { type: Number, required: true },
+	roundDates: { type: Number, required: true },
+	categories: [String],
+});
+
+const User = model('User', userSchema);
+const Centre = model('Centre', centreSchema);
+const Competition = model('Competition', competitionSchema);
+
+//
 
 app.get('/', (req, res) => {});
 
