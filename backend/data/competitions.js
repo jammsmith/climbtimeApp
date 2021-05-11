@@ -25,4 +25,4 @@ const competitions = [
 	},
 ];
 
-export default competitions;
+module.exports = competitions;

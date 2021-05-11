@@ -1,0 +1,22 @@
+{
+	"name": "climb-time",
+	"version": "1.0.0",
+	"description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+	"main": "App.js",
+	"scripts": {
+		"start": "nodemon backend/app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jammsmith/climbtimeApp.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jammsmith/climbtimeApp/issues"
+	},
+	"homepage": "https://github.com/jammsmith/climbtimeApp#readme",
+	"dependencies": {
+		"express": "^4.17.1"
+	}
+}

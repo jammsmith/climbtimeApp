@@ -1,16 +1,26 @@
 // External imports
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // Component Imports
 import HRule from '../components/HRule';
 import ScoreIcons from '../components/ScoreIcons/ScoreIcons';
 import RankingTable, { Top10 } from '../components/RankingTable';
 
-const CompOverview = () => {
+const CompOverview = (props) => {
+	const [compInfo, setCompInfo] = useState({});
+
+	useEffect(() => {
+		axios
+			.get(`/api/competitions/${props.match.params.id}`)
+			.then((response) => setCompInfo(response.data))
+			.catch((err) => console.log(err, err.response));
+	});
+
 	return (
 		<>
-			{/* <CompetitionCard />  ---->  In development, insert in place of h1 */}
-			<h1>The Climbing Lab Ice Bloc</h1>
+			<h1>{compInfo.compName}</h1>
+			<h3>{compInfo.centreName}</h3>
 			<HRule />
 			<ScoreIcons />
 

@@ -20,7 +20,7 @@ const CentreCard = (props) => {
 			</CardContent>
 			<CardContent>
 				<ButtonContainer>
-					<CardLink to='comp-overview'>View Competition</CardLink>
+					<CardLink to={'competitions/' + props.id}>View Competition</CardLink>
 					<CardLink to='register'>Sign Up</CardLink>
 				</ButtonContainer>
 			</CardContent>

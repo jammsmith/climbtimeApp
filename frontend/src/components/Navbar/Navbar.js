@@ -1,29 +1,40 @@
 import React from 'react';
-import {
-	Nav,
-	NavLink,
-	Bars,
-	NavMenu,
-	NavBtn,
-	NavBtnLink,
-} from './NavbarElements';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+import './Navbar.css';
+import { FaHome, FaBars } from 'react-icons/fa';
+
+const Navbar = (props) => {
 	return (
-		<Nav>
-			<NavLink to='/'>ClimbTime</NavLink>
-			<Bars />
-			<NavMenu>
-				<NavLink to='/my-competitions'>My Competitions</NavLink>
-				<NavLink to='/comp-overview'>Comp Overview</NavLink>
-				<NavLink to='/log-attempt'>Add to Scorecard</NavLink>
-				<NavLink to='/my-scorecards'>My Scorecards</NavLink>
-			</NavMenu>
-			<NavBtn>
-				<NavBtnLink to='/sign-in'>Sign In</NavBtnLink>
-				<NavBtnLink to='/sign-up'>Sign Up!</NavBtnLink>
-			</NavBtn>
-		</Nav>
+		<header className='navbar'>
+			<nav className='navbar__navigation'>
+				<div className='navbar__goHome'>
+					<Link className='navbar__goHome--link' to='/'>
+						<FaHome size={25} />
+					</Link>
+				</div>
+				<div className='navbar__spacer'></div>
+				<div className='navbar__navigation--items'>
+					<ul>
+						<li>
+							<Link className='link' to='/comp-overview'>
+								Comp Overview
+							</Link>
+						</li>
+						<li>
+							<Link className='link' to='/my-scorecards'>
+								My Scorecards
+							</Link>
+						</li>
+					</ul>
+				</div>
+				<FaBars
+					className='navbar__toggler'
+					size={25}
+					onClick={props.toggleClicked}
+				/>
+			</nav>
+		</header>
 	);
 };
 
