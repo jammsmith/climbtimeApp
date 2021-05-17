@@ -22,7 +22,6 @@ db.once('open', () => console.log('Connected with local database'));
 
 // Create Schemas & Models
 const { Schema, model } = mongoose;
-const { number, string } = require('prop-types');
 
 const userSchema = new Schema({
 	fName: { type: String, required: true },
@@ -43,7 +42,7 @@ const centreSchema = new Schema({
 	centreUrl: { type: String, required: true },
 	centreLocation: { type: String, required: true },
 	centreLogo: { type: String, required: true },
-	centreContactNum: number,
+	centreContactNum: Number,
 });
 
 const competitionSchema = new Schema({
@@ -60,6 +59,23 @@ const Competition = model('Competition', competitionSchema);
 
 //
 
+// const addUser = () => {
+// 	const newUser = new User({
+// 		fName: 'James',
+// 		lName: 'Smith',
+// 		yearOfBirth: 1990,
+// 		email: 'j.smith1710@gotmal.com',
+// 		userName: 'js1710',
+// 		password: 'jaghagfghaf',
+// 		activeComps: {
+// 			compName: 'Ice Bloc',
+// 			currentScore: 98,
+// 			currentPosition: 14,
+// 		},
+// 	});
+// 	newUser.save();
+// };
+
 app.get('/', (req, res) => {});
 
 app.get('/api/competitions', (req, res) => {
@@ -67,6 +83,11 @@ app.get('/api/competitions', (req, res) => {
 });
 
 app.get('/api/competitions/:id', (req, res) => {
+	const comp = competitions.find((c) => c._id == req.params.id);
+	res.json(comp);
+});
+
+app.get('/api/competitions/:id/log-attempt', (req, res) => {
 	const comp = competitions.find((c) => c._id == req.params.id);
 	res.json(comp);
 });

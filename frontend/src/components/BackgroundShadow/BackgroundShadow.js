@@ -1,11 +1,9 @@
 import React from 'react';
 
-import './BackgroundShadow.css';
+import { Shadow } from './BackgroundShadowElements';
 
 const BackgroundShadow = (props) => {
-	return (
-		<div className='background-shadow' onClick={props.backgroundClicked} />
-	);
+	return <Shadow onClick={props.backgroundClicked} />;
 };
 
 export default BackgroundShadow;

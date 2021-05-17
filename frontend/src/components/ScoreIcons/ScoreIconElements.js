@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import colours from '../../colours';
 
-const { yellow, grey } = colours;
+const { secondary, dark } = colours;
 
 export const IconBanner = styled.div`
 	display: flex;
@@ -23,13 +25,17 @@ export const Icon = styled.div`
 `;
 
 export const IconContent = styled.h1`
-	color: ${yellow};
+	color: ${secondary};
 	font-weight: bold;
 `;
 
 export const IconLabel = styled.label`
-	color: ${grey};
+	color: ${dark};
 	align-self: flex-end;
 	font-size: 0.8rem;
+	text-decoration: none;
+`;
+
+export const IconLink = styled(Link)`
 	text-decoration: none;
 `;

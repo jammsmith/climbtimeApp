@@ -1,8 +1,12 @@
 import React from 'react';
-import SubmitButtonPlus from '../SubmitButtonPlus';
-import { IconBanner, Icon, IconContent, IconLabel } from './IconElements';
-
-import { Link } from 'react-router-dom';
+import SubmitButtonPlus from '../SubmitButtonPlus/SubmitButtonPlus';
+import {
+	IconBanner,
+	Icon,
+	IconContent,
+	IconLabel,
+	IconLink,
+} from './ScoreIconElements';
 
 const ScoreIcon = (props) => {
 	return (
@@ -21,6 +25,7 @@ const AddScoreIcon = (props) => {
 			<Icon>
 				<SubmitButtonPlus small />
 			</Icon>
+
 			{props.iconLabel}
 		</IconLabel>
 	);
@@ -31,9 +36,9 @@ const ScoreIcons = () => {
 		<IconBanner>
 			<ScoreIcon iconContent='96' iconLabel='Your Score' />
 			<ScoreIcon iconContent='5th' iconLabel='Your Position' />
-			<Link style={{ textDecoration: 'none' }} to='log-attempt'>
+			<IconLink to='../log-attempt'>
 				<AddScoreIcon iconLabel='Add To Score!' />
-			</Link>
+			</IconLink>
 		</IconBanner>
 	);
 };

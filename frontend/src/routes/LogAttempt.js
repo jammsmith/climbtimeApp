@@ -4,8 +4,7 @@ import {
 	ClimbNumInput,
 } from '../components/AddScoreForm/AddScoreElements';
 import AddAttempt from '../components/AddScoreForm/AddAttempt';
-import HRule from '../components/HRule';
-import SubmitButtonPlus from '../components/SubmitButtonPlus';
+import SubmitButtonPlus from '../components/SubmitButtonPlus/SubmitButtonPlus';
 
 const LogAttempt = () => {
 	return (
@@ -18,7 +17,7 @@ const LogAttempt = () => {
 				button4='4+ Goes'
 				radioText='Climb Completed!'
 			/>
-			<HRule />
+			<hr />
 			<AddAttempt
 				button1='1'
 				button2='2'
@@ -26,7 +25,7 @@ const LogAttempt = () => {
 				button4='4+'
 				radioText='Just Logging Some Attempts'
 			/>
-			<HRule />
+			<hr />
 			<SubmitButtonPlus size='30' />
 		</InputScoresForm>
 	);

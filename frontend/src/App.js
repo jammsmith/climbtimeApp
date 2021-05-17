@@ -20,17 +20,20 @@ function App() {
 
 	const closeMenu = () => setMenuInView(false);
 
+	let sideDrawer;
 	let backgroundShadow;
 
 	if (menuInView) {
+		sideDrawer = <SideDrawer show={menuInView} drawerLinkClick={closeMenu} />;
 		backgroundShadow = <BackgroundShadow backgroundClicked={closeMenu} />;
 	}
+
 	//
 
 	return (
 		<Router>
 			<Navbar toggleClicked={toggleHandler} />
-			<SideDrawer show={menuInView} drawerLinkClick={closeMenu} />
+			{sideDrawer}
 			{backgroundShadow}
 			<main>
 				<Switch>

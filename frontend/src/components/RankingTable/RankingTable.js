@@ -1,22 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import colours from '../colours';
-
-const { grey, yellow } = colours;
-
-const TableContainer = styled.div`
-	display: flex;
-	justify-content: center;
-`;
-
-const Table = styled.table`
-	color: ${grey};
-`;
-
-const MyRank = styled.tr`
-	color: ${yellow};
-	font-size: 1.25rem;
-`;
+import { TableContainer, Table, MyRank } from './RankingTableElements';
 
 const RankingTable = () => {
 	return (

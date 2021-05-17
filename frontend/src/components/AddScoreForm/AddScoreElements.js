@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import colours from '../../colours';
 
-const { grey, yellow } = colours;
+const { primary, dark } = colours;
 
 export const InputScoresForm = styled.form`
 	display: flex;
@@ -13,8 +13,8 @@ export const InputScoresForm = styled.form`
 export const ClimbNumInput = styled.input`
 	background-color: transparent;
 	border-radius: 3px;
-	border: 0.1rem solid ${yellow};
-	color: ${yellow};
+	border: 0.1rem solid ${primary};
+	color: ${primary};
 	font-size: 1rem;
 	font-weight: bold;
 	height: 5rem;
@@ -24,9 +24,9 @@ export const ClimbNumInput = styled.input`
 	width: 5rem;
 	:focus,
 	:active {
-		border: 0.2rem solid ${yellow};
+		border: 0.2rem solid ${primary};
 		outline: none;
-		color: ${yellow};
+		color: ${primary};
 	}
 `;
 
@@ -36,11 +36,11 @@ export const AddScoreContainer = styled.div`
 `;
 
 export const RadioLabel = styled.label`
-	color: ${grey};
+	color: ${dark};
 `;
 
 export const RadioInput = styled.input`
-	color: ${grey};
+	color: ${dark};
 	margin-left: 0.25rem;
 `;
 
@@ -52,9 +52,9 @@ export const ChooseScoreGrid = styled.div`
 
 export const ChooseScoreBtn = styled.button`
 	background-color: #fff;
-	border: 0.2rem solid ${yellow};
+	border: 0.2rem solid ${primary};
 	border-radius: 5px;
-	color: ${yellow};
+	color: ${primary};
 	height: 5rem;
 	margin: 0.25rem;
 	overflow: hidden;

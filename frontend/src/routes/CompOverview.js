@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Component Imports
-import HRule from '../components/HRule';
 import ScoreIcons from '../components/ScoreIcons/ScoreIcons';
-import RankingTable, { Top10 } from '../components/RankingTable';
+import RankingTable, { Top10 } from '../components/RankingTable/RankingTable';
 
 const CompOverview = (props) => {
 	const [compInfo, setCompInfo] = useState({});
@@ -21,13 +20,13 @@ const CompOverview = (props) => {
 		<>
 			<h1>{compInfo.compName}</h1>
 			<h3>{compInfo.centreName}</h3>
-			<HRule />
+			<hr />
 			<ScoreIcons />
 
-			<HRule />
+			<hr />
 			<h2>My Ranking</h2>
 			<RankingTable />
-			<HRule />
+			<hr />
 			<h2>Top 10</h2>
 			<Top10 />
 		</>

@@ -3,12 +3,12 @@ import React from 'react';
 import {
 	Card,
 	CardLink,
+	CardLinkContainer,
 	CardImage,
 	CardContent,
 	CardTitle,
 	CardInfo,
-	ButtonContainer,
-} from './CardElements';
+} from './CentreCardElements';
 
 const CentreCard = (props) => {
 	return (
@@ -19,10 +19,12 @@ const CentreCard = (props) => {
 				<CardInfo>{props.centreName}</CardInfo>
 			</CardContent>
 			<CardContent>
-				<ButtonContainer>
-					<CardLink to={'competitions/' + props.id}>View Competition</CardLink>
-					<CardLink to='register'>Sign Up</CardLink>
-				</ButtonContainer>
+				<CardLinkContainer>
+					<CardLink primary to={'competitions/' + props.id}>
+						View Competition
+					</CardLink>
+					<CardLink to='register'>Register</CardLink>
+				</CardLinkContainer>
 			</CardContent>
 		</Card>
 	);

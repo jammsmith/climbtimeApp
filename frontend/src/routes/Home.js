@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { CardContainer } from '../components/CentreCard/CardElements';
+import MainHeading from '../components/Headings/MainHeading';
+import { CardContainer } from '../components/CentreCard/CentreCardElements';
 import CentreCard from '../components/CentreCard/CentreCard';
 
 const Home = () => {
@@ -15,19 +16,22 @@ const Home = () => {
 	}, []);
 
 	return (
-		<CardContainer>
-			{competitions.map((comp) => {
-				return (
-					<CentreCard
-						key={comp._id}
-						id={comp._id}
-						image={comp.centreLogo}
-						centreName={comp.centreName}
-						compName={comp.compName}
-					/>
-				);
-			})}
-		</CardContainer>
+		<>
+			<MainHeading headingContent='My Competitions' />
+			<CardContainer>
+				{competitions.map((comp) => {
+					return (
+						<CentreCard
+							key={comp._id}
+							id={comp._id}
+							image={comp.centreLogo}
+							centreName={comp.centreName}
+							compName={comp.compName}
+						/>
+					);
+				})}
+			</CardContainer>
+		</>
 	);
 };
 
