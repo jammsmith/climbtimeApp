@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
 	AddScoreContainer,
@@ -9,6 +9,8 @@ import {
 } from './AddScoreElements';
 
 const AddAttempt = (props) => {
+	const [isClicked, setIsClicked] = useState(false);
+
 	return (
 		<AddScoreContainer>
 			<RadioLabel>
@@ -16,17 +18,33 @@ const AddAttempt = (props) => {
 				<RadioInput id='climbCompleted' name='addAttempt' type='radio' />
 			</RadioLabel>
 			<ChooseScoreGrid>
-				<ChooseScoreBtn name='attempt1' type='button'>
-					<h3>{props.button1}</h3>
+				<ChooseScoreBtn
+					name='attempt1'
+					onClick={() => setIsClicked(true)}
+					type='button'
+					value={isClicked}>
+					{props.button1}
 				</ChooseScoreBtn>
-				<ChooseScoreBtn name='attempt2' type='button'>
-					<h3>{props.button2}</h3>
+				<ChooseScoreBtn
+					name='attempt2'
+					onClick={() => setIsClicked(true)}
+					type='button'
+					value={isClicked}>
+					{props.button2}
 				</ChooseScoreBtn>
-				<ChooseScoreBtn name='attempt3' type='button'>
-					<h3>{props.button3}</h3>
+				<ChooseScoreBtn
+					name='attempt3'
+					onClick={() => setIsClicked(true)}
+					type='button'
+					value={isClicked}>
+					{props.button3}
 				</ChooseScoreBtn>
-				<ChooseScoreBtn name='attempt4' type='button'>
-					<h3>{props.button4}</h3>
+				<ChooseScoreBtn
+					name='attempt4'
+					onClick={() => setIsClicked(true)}
+					type='button'
+					value={isClicked}>
+					{props.button4}
 				</ChooseScoreBtn>
 			</ChooseScoreGrid>
 		</AddScoreContainer>

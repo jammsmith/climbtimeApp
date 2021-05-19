@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import colours from '../../colours';
 
-const { primary, dark } = colours;
+const { primary, dark, light } = colours;
 
 export const InputScoresForm = styled.form`
 	display: flex;
@@ -55,11 +55,22 @@ export const ChooseScoreBtn = styled.button`
 	border: 0.2rem solid ${primary};
 	border-radius: 5px;
 	color: ${primary};
+	font-size: 1.15rem;
+	font-weight: bold;
 	height: 5rem;
 	margin: 0.25rem;
 	overflow: hidden;
 	width: 45%;
 	max-width: 250px;
+
+	:active,
+	:hover,
+	:focus {
+		background: ${primary};
+		color: ${light};
+		cursor: pointer;
+		transition: all 0.2s ease-in;
+	}
 
 	@media (min-width: 768px) {
 		margin: 0.5rem;

@@ -14,10 +14,7 @@ function App() {
 	// Small screen menu toggle
 	const [menuInView, setMenuInView] = useState(false);
 
-	const toggleHandler = () => {
-		return setMenuInView((prevValue) => !prevValue);
-	};
-
+	const toggleHandler = () => setMenuInView((prevValue) => !prevValue);
 	const closeMenu = () => setMenuInView(false);
 
 	let sideDrawer;
