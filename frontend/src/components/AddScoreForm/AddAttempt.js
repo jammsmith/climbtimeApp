@@ -1,54 +1,60 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
-	AddScoreContainer,
-	RadioLabel,
-	RadioInput,
-	ChooseScoreGrid,
-	ChooseScoreBtn,
+  AddScoreContainer,
+  RadioLabel,
+  RadioInput,
+  ChooseScoreGrid,
+  ChooseScoreBtn,
+  ChooseScoreLabel
 } from './AddScoreElements';
 
 const AddAttempt = (props) => {
-	const [isClicked, setIsClicked] = useState(false);
-
-	return (
-		<AddScoreContainer>
-			<RadioLabel>
-				{props.radioText}
-				<RadioInput id='climbCompleted' name='addAttempt' type='radio' />
-			</RadioLabel>
-			<ChooseScoreGrid>
-				<ChooseScoreBtn
-					name='attempt1'
-					onClick={() => setIsClicked(true)}
-					type='button'
-					value={isClicked}>
-					{props.button1}
-				</ChooseScoreBtn>
-				<ChooseScoreBtn
-					name='attempt2'
-					onClick={() => setIsClicked(true)}
-					type='button'
-					value={isClicked}>
-					{props.button2}
-				</ChooseScoreBtn>
-				<ChooseScoreBtn
-					name='attempt3'
-					onClick={() => setIsClicked(true)}
-					type='button'
-					value={isClicked}>
-					{props.button3}
-				</ChooseScoreBtn>
-				<ChooseScoreBtn
-					name='attempt4'
-					onClick={() => setIsClicked(true)}
-					type='button'
-					value={isClicked}>
-					{props.button4}
-				</ChooseScoreBtn>
-			</ChooseScoreGrid>
-		</AddScoreContainer>
-	);
+  const {
+    isClimbCompleted,
+    onCompletedSelection,
+    attemptsNumChange,
+    attemptsNum1,
+    attemptsNum2,
+    attemptsNum3,
+    attemptsNum4,
+    radioText
+  } = props;
+  return (
+    <AddScoreContainer>
+      <RadioLabel>
+        {radioText}
+        <RadioInput
+          name='addAttempt'
+          onChange={onCompletedSelection}
+          value={isClimbCompleted}
+          type='radio'
+        />
+      </RadioLabel>
+      <ChooseScoreGrid>
+        <ChooseScoreLabel>
+          {attemptsNum1}
+          <ChooseScoreBtn type='radio' value='1' onClick={attemptsNumChange} />
+        </ChooseScoreLabel>
+        <ChooseScoreLabel>
+          {attemptsNum2}
+          <ChooseScoreBtn type='radio' value='2' onClick={attemptsNumChange} />
+        </ChooseScoreLabel>
+        <ChooseScoreLabel>
+          {attemptsNum3}
+          <ChooseScoreBtn type='radio' value='3' onClick={attemptsNumChange} />
+        </ChooseScoreLabel>
+        <ChooseScoreLabel>
+          {attemptsNum4}
+          <ChooseScoreBtn
+            type='radio'
+            value='4Plus'
+            onClick={attemptsNumChange}
+          />
+        </ChooseScoreLabel>
+      </ChooseScoreGrid>
+    </AddScoreContainer>
+  );
 };
 
 export default AddAttempt;

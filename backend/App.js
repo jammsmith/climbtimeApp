@@ -1,60 +1,73 @@
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+// import bcrypt from 'bcrypt';
+
+import Competition from './models/competitionModel.js';
+// import Scorecard from './models/ScorecardModel.js';
+// import User from './models/userModel.js';
+
+dotenv.config();
+
+const { MONGO_URI } = process.env;
+
 const app = express();
 
-const competitions = require('./data/competitions');
-const mongoSchemas = require('./mongoSchemas');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Create Mongoose connection
-const mongoose = require('mongoose');
-
-const mongoUrl =
-	'mongodb+srv://admin-james01:TEST123@climbtime.zr5a2.mongodb.net/climbTimeDB';
-
 mongoose
-	.connect(mongoUrl, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-	})
-	.catch((err) => console.log(err));
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  })
+  .catch(err => console.log(err));
 
 // Check mongoose connection
 const db = mongoose.connection;
 
-db.on('error', (err) => console.log(err));
+db.on('error', err => console.log(err));
 db.once('open', () => console.log('Connected with climbTimeDB'));
-
-// Import Schemas and create models
-const { model } = mongoose;
-const { userSchema, centreSchema, competitionSchema, scoreSchema } =
-	mongoSchemas;
-
-const User = model('User', userSchema);
-const Centre = model('Centre', centreSchema);
-const Competition = model('Competition', competitionSchema);
-const Score = model('Score', scoreSchema);
-
-// Test add to DB
-const addUser = () => {
-	const newUser = new User({
-		fName: 'James',
-		lName: 'Smith',
-		userName: 'js1710',
-	});
-	newUser.save();
-};
 
 //
 
-app.get('/', (req, res) => {});
+app.post('/api/log-attempt', (req, res) => {
+  // const { participant, round, newScore } = req.body;
+  // const { climbNum, isClimbCompleted, attemptNum } = newScore;
+});
+
+// Check if scorecard exists for both userID and roundNum.
+// Work out actual new score based on number of attempts.
+
+// If scorecard already exists:
+// Check if climbNum already has associated score, either add to current score or add new score.
+// If scorecard does not exist:
+// Create new scorecard and add details
 
 app.get('/api/competitions', (req, res) => {
-	res.json(competitions);
+  Competition.find({}, (err, foundComps) => {
+    if (!err) {
+      res.json(foundComps);
+    } else {
+      console.log(err);
+    }
+  });
 });
 
 app.get('/api/competitions/:id', (req, res) => {
-	const comp = competitions.find((c) => c._id == req.params.id);
-	res.json(comp);
+  Competition.findById(req.params.id, (err, foundComp) => {
+    if (!err && foundComp) {
+      res.json(foundComp);
+    } else {
+      res.status(404).json({ message: 'Competition not found!' });
+    }
+  });
 });
 
-app.listen(3001, console.log('Server running on port 3001'));
+//
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT || 3001, console.log(`Server running on port ${PORT}`));
