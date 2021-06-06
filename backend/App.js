@@ -33,6 +33,10 @@ db.once('open', () => console.log('Connected with climbTimeDB'));
 
 //
 
+app.post('/api/register', (req, res) => {
+  res.JSON(req.body);
+});
+
 app.post('/api/log-attempt', (req, res) => {
   // const { participant, round, newScore } = req.body;
   // const { climbNum, isClimbCompleted, attemptNum } = newScore;

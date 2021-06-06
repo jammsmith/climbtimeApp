@@ -25,7 +25,7 @@ const AddAttempt = (props) => {
       <RadioLabel>
         {radioText}
         <RadioInput
-          name='addAttempt'
+          name='isClimbCompleted'
           onChange={onCompletedSelection}
           value={isClimbCompleted}
           type='radio'
@@ -34,20 +34,21 @@ const AddAttempt = (props) => {
       <ChooseScoreGrid>
         <ChooseScoreLabel>
           {attemptsNum1}
-          <ChooseScoreBtn type='radio' value='1' onClick={attemptsNumChange} />
+          <ChooseScoreBtn type='radio' name='attemptsNum' value='1' onClick={attemptsNumChange} />
         </ChooseScoreLabel>
         <ChooseScoreLabel>
           {attemptsNum2}
-          <ChooseScoreBtn type='radio' value='2' onClick={attemptsNumChange} />
+          <ChooseScoreBtn type='radio' name='attemptsNum' value='2' onClick={attemptsNumChange} />
         </ChooseScoreLabel>
         <ChooseScoreLabel>
           {attemptsNum3}
-          <ChooseScoreBtn type='radio' value='3' onClick={attemptsNumChange} />
+          <ChooseScoreBtn type='radio' name='attemptsNum' value='3' onClick={attemptsNumChange} />
         </ChooseScoreLabel>
         <ChooseScoreLabel>
           {attemptsNum4}
           <ChooseScoreBtn
             type='radio'
+            name='attemptsNum'
             value='4Plus'
             onClick={attemptsNumChange}
           />

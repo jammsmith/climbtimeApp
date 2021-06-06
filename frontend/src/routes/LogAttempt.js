@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useForm from '../customHooks/useForm';
 import {
   InputScoresForm,
   ClimbNumInput
@@ -8,47 +9,26 @@ import SubmitButtonPlus from '../components/SubmitButtonPlus/SubmitButtonPlus';
 import axios from 'axios';
 
 const LogAttempt = () => {
-  const [newScore, setNewScore] = useState({
+
+  const [values, handleChange] = useForm({
     climbNum: '',
     isClimbCompleted: '',
     attemptsNum: ''
-  });
-
-  const onClimbNumChange = (event) => {
-    setNewScore((prevValues) => {
-      return {
-        ...prevValues,
-        climbNum: event.target.value
-      };
-    });
-  };
-
-  const onCompletedSelection = (event) => {
-    setNewScore((prevValues) => {
-      return {
-        ...prevValues,
-        isClimbCompleted: event.target.value
-      };
-    });
-  };
-
-  const onAttemptsNumChange = (event) => {
-    setNewScore((prevValues) => {
-      return {
-        ...prevValues,
-        attemptsNum: event.target.value
-      };
-    });
-  };
-
+  })
+  const { climbNum, isClimbCompleted, attemptsNum } = values;
+  //
+  //
+  // Post form data to API -->
   const handleSubmit = (event) => {
     event.preventDefault();
 
     axios
       .post('/api/log-attempt', {
-        participant: 'james', // participant and round values should be added automatically
+        participant: 'james', // participant and round values should be added automatically via useContext
         round: '1',
-        newScore
+        climbNum: climbNum,
+        isClimbCompleted: isClimbCompleted,
+        attemptsNum: attemptsNum
       })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
@@ -56,7 +36,7 @@ const LogAttempt = () => {
 
   return (
     <InputScoresForm>
-      <ClimbNumInput onChange={onClimbNumChange} value={newScore.climbNum} />
+      <ClimbNumInput onChange={handleChange} name='climbNum' value={climbNum} />
       <AddAttempt
         attemptsNum1='Flash!'
         attemptsNum2='2nd Go'
@@ -64,8 +44,8 @@ const LogAttempt = () => {
         attemptsNum4='4+ Goes'
         radioText='Climb Completed!'
         isClimbCompleted='completed'
-        onCompletedSelection={onCompletedSelection}
-        attemptsNumChange={onAttemptsNumChange}
+        onCompletedSelection={handleChange}
+        attemptsNumChange={handleChange}
       />
       <hr />
       <AddAttempt
@@ -75,8 +55,8 @@ const LogAttempt = () => {
         attemptsNum4='4+'
         radioText='Just Logging Some Attempts'
         isClimbCompleted='notCompleted'
-        onCompletedSelection={onCompletedSelection}
-        attemptsNumChange={onAttemptsNumChange}
+        onCompletedSelection={handleChange}
+        attemptsNumChange={handleChange}
       />
       <hr />
       <SubmitButtonPlus onSubmit={handleSubmit} />
